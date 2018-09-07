@@ -7,16 +7,29 @@ import { TeamDetailComponent } from './components/team-detail/team-detail.compon
 import { TeamRoutingModule } from './team-routing.module';
 import { PlayerModule } from './../player/player.module';
 import { TeamListComponent } from './components/team-list/team-list.component';
+import { SharedModule } from '../shared/shared.module';
+
+const modules : any[] = [
+  CommonModule,
+  TeamRoutingModule,
+  PlayerModule,
+  SharedModule
+]
+
+const components: any[] = [
+  TeamComponent,
+  TeamDetailComponent,
+  TeamListComponent
+]
 @NgModule({
   imports: [
-    CommonModule,
-    TeamRoutingModule,
-    PlayerModule
+    ...modules
   ],
   declarations: [
-    TeamComponent,
-    TeamDetailComponent,
-    TeamListComponent
+    ...components
+  ],
+  exports: [
+    ...components
   ]
 })
 export class TeamModule { }

@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TeamRoutingModule } from './team/team-routing.module';
-import { TeamListComponent } from './team/components/team-list/team-list.component';
-import { TeamDetailComponent } from './team/components/team-detail/team-detail.component';
 import { routesConfigPlayer } from './player/player-routing.module';
+import { PageNotFoundComponent } from './error/components/page-not-found/page-not-found.component';
 
 
 const routesConfig: Routes = [
   {
     path: '',
     redirectTo: 'team',
+    pathMatch: 'full'
+  },
+  {
+    path: "**",
+    redirectTo: 'error',
     pathMatch: 'full'
   }
 ];

@@ -6,18 +6,27 @@ import { TeamModule } from './team.module'
 import { TeamComponent } from './pages/team/team.component';
 import { TeamDetailComponent } from './components/team-detail/team-detail.component';
 
-import {routesConfigPlayer} from './../player/player-routing.module'
+import { routesConfigPlayer } from './../player/player-routing.module'
 import { PlayerDetailComponent } from './../player/pages/player-detail/player-detail.component'
+import { PlayerComponent } from './../player/pages/player/player.component'
+
 import { TeamListComponent } from './components/team-list/team-list.component';
+import { MainLayoutComponent } from '../shared/components/main-layout/main-layout.component';
 
 const routesConfig: Routes = [
   {
     path: 'team',
-    component: TeamComponent
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: TeamComponent
+      },
+    ]
   },
   {
     path: 'team/:id',
-    component: TeamDetailComponent,
+    component: MainLayoutComponent,
     children: [
       ...routesConfigPlayer
     ]

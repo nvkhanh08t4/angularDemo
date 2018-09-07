@@ -4,24 +4,40 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PlayerModule } from './../player/player.module';
 import { PlayerDetailComponent } from './../player/pages/player-detail/player-detail.component'
-import { PlayerComponent } from './pages/player/player.component';
+import { PlayerListComponent } from './components/player-list/player-list.component';
+import { TeamDetailComponent } from '../team/components/team-detail/team-detail.component';
 
 export const routesConfigPlayer: Routes = [
   {
-    //path: 'team/:id/player',
-    path: 'player',
-   // component: PlayerDetailComponent,
+    path: '',
+    component: TeamDetailComponent,
     children: [
-      { path: '', redirectTo: 'edit', pathMatch: 'full' },
-      { path: 'detail', component: PlayerComponent },
-      { path: 'edit', component: PlayerDetailComponent },
-      { path: 'new', component:  PlayerComponent }
+      {
+        path: '',
+        component: PlayerListComponent
+      },
+    ]
+  },
+  {
+    path: 'player',
+    component: PlayerDetailComponent,
+    children: [
+      {
+        path: 'edit',
+        component: PlayerDetailComponent,
+        data: { title: 'edit' }
+      },
+      {
+        path: 'new',
+        component: PlayerDetailComponent,
+        data: { title: 'new' }
+      }
     ]
   }
 ];
 
 @NgModule({
-  imports: [ CommonModule , RouterModule.forChild(routesConfigPlayer)],
-  exports: [ RouterModule ],
+  imports: [CommonModule, RouterModule.forChild(routesConfigPlayer)],
+  exports: [RouterModule],
 })
-export class PlayerRoutingModule {}
+export class PlayerRoutingModule { }
