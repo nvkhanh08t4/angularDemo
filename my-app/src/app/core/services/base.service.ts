@@ -24,10 +24,14 @@ export class BaseService<T> {
   }
 
   /**
-   * Get list
+   * Call API with GET method
    * @param url
    */
   getList(url: string): Observable<T[]> {
+    return this.http.get<T[]>(this.getUrl(url));
+  }
+
+  getItem(url: string): Observable<T[]> {
     return this.http.get<T[]>(this.getUrl(url));
   }
 

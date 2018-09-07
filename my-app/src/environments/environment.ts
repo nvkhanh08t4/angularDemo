@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL_API: "http://5b8910b91863df001433e8a1.mockapi.io"
+  URL_API: "http://5b92a5234c818e001456e9a6.mockapi.io"
 };
 
 /*

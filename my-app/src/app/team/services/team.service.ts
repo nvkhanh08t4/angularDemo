@@ -16,4 +16,8 @@ export class TeamService extends BaseService<Team>{
   getTeamList(): Observable<Team[]>{
     return this.getList(TEAM.URL);
   }
+
+  getTeamDetail(id: number): Observable<Team[]>{
+    return this.getItem(`${TEAM.URL}/${id}`);
+  }
 }
