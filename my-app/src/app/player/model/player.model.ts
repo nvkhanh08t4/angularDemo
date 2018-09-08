@@ -5,6 +5,7 @@ export interface Player {
   position: string;
   height: number;
   weight: number;
-  birthday: Date;
+  birthday: string;
   gender: number;
+  avatar: string;
 }

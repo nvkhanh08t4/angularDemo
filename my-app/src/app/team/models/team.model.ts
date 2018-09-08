@@ -7,4 +7,7 @@ export interface Team {
   drawn: number;
   lost: number;
   point: number;
+  avatar: string;
+  address: string;
+  website: string;
 }

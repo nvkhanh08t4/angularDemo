@@ -1,4 +1,26 @@
-<p>
-  team-detail works!
-</p>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="clubImage">
+      <picture>
+        <img src="{{team.avatar}}" alt="Flowers" style="width:auto;">
+      </picture>
+    </div>
+    <div class="clubDetail">
+      <h2>{{team.name}}</h2>
+      <h4>Add: {{team.address}}</h4>
+      <h4>Tel: {{team.phone}}</h4>
+      <h4>Offical website: {{team.website}}</h4>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <button type="button" class="btn btn-primary">Add Player</button>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <app-search></app-search>
+  </div>
+</div>
+<hr>
 <router-outlet></router-outlet>
