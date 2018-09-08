@@ -37,4 +37,8 @@ export class PlayerListComponent implements OnInit {
     this.router.navigate(['/team'])
   }
 
+  goToPlayer(id: number){
+    this.router.navigate([`/team/${id}/player`]);
+  }
+
 }
