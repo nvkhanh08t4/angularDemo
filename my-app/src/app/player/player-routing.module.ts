@@ -25,19 +25,19 @@ export const routesConfigPlayer: Routes = [
       {
         path: '',
         component: PlayerDetailComponent,
-        data: { title: 'view' },
+        data: { title: 'add' },
       },
       {
         path: 'edit',
         component: PlayerDetailComponent,
         data: { title: 'edit' }
-      },
-      {
-        path: 'new',
-        component: PlayerDetailComponent,
-        data: { title: 'new' }
       }
     ]
+  },
+  {
+    path: 'players/add',
+    component: PlayerDetailComponent,
+    data: { title: 'add' }
   }
 ];
 

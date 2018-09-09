@@ -10,20 +10,39 @@ import { TEAM } from './../../team/team-constants'
 })
 export class PlayerService extends BaseService<Player> {
 
+  /**
+   * Get player list
+   * @param id 
+   */
   getPlayerList(id: number): Observable<Player[]> {
     return this.getList(`${TEAM.URL}/${id}/${PLAYER.URL}`)
   }
 
   /**
-   * Update Player
-   * @param team 
-   * @param id 
+   * update inform player
+   * @param player 
+   * @param teamID 
+   * @param playerID 
    */
   updatePlayer(player: Player, teamID: number, playerID: number): Observable<Player> {
     return this.put(`${TEAM.URL}/${teamID}/${PLAYER.URL}/${playerID}`, player);
   }
 
-  getPlayer(teamID:number, playerID: number): Observable<Player[]> {
+  /**
+   * Show inform player
+   * @param teamID 
+   * @param playerID 
+   */
+  getPlayer(teamID: number, playerID: number): Observable<Player[]> {
     return this.getItem(`${TEAM.URL}/${teamID}/${PLAYER.URL}/${playerID}`);
+  }
+
+  /**
+   * Add new player
+   * @param player 
+   * @param teamID 
+   */
+  addPlayer(player: Player, teamID: number): Observable<Player> {
+    return this.post(`${TEAM.URL}/${teamID}/${PLAYER.URL}`, player);
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from '../../services/team.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Team } from '../../models/team.model';
+import { PLAYER } from '../../../player/player-constants';
+import { TEAM } from '../../team-constants';
 
 @Component({
   selector: 'app-team-detail',
@@ -11,7 +13,7 @@ import { Team } from '../../models/team.model';
 })
 export class TeamDetailComponent implements OnInit {
   public team: Team;
-  public id: number;
+  public teamID: number;
 
   constructor(
     private teamService: TeamService,
@@ -21,16 +23,20 @@ export class TeamDetailComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.paramMap.subscribe((param: ParamMap) => {
-      this.id = Number(param.get('id'));
+      this.teamID = Number(param.get('id'));
     });
-    this.showTeamDetail(this.id);
+    this.showTeamDetail(this.teamID);
   }
 
-  showTeamDetail(id: number){
-    this.teamService.getTeamDetail(id).subscribe((res: any)=> {
+  showTeamDetail(teamID: number) {
+    this.teamService.getTeamDetail(teamID).subscribe((res: any) => {
       this.team = res;
-      console.log(this.team);
     })
+  }
+
+  addPlayer(){
+    this.router.navigate([`${TEAM.URL}/${this.teamID}/${PLAYER.URL}/add`])
+
   }
 
 }

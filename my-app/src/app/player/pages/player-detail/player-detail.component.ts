@@ -51,13 +51,11 @@ export class PlayerDetailComponent implements OnInit {
       // Get teamID of team param from URL
       this.activeRoute.parent.paramMap.subscribe((params: ParamMap) => {
         this.teamID = Number(params.get('id'));
-        console.log('teamID', this.teamID);
       });
 
     // Get playID of player param from URL
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
       this.playerID = Number(params.get('id'));
-      console.log('playerID', this.playerID);
     });
 
     if (this.action === 'edit') {
@@ -82,9 +80,10 @@ export class PlayerDetailComponent implements OnInit {
    * @param player
    */
   onSubmit(player: Player): void {
+    console.log('action', this.action);
     if (this.action === 'add') {
-      // Create product
-      // this.onCreate(player);
+      // Create player
+       this.onCreatePlayer(player);
       console.log('add new');
     } else {
       // Update player
@@ -92,6 +91,12 @@ export class PlayerDetailComponent implements OnInit {
     }
   }
 
+  onCreatePlayer(player: Player) {
+    this.playerService.addPlayer(player, this.teamID).subscribe(data =>{
+      alert('add OK')
+      this.router.navigate([`${TEAM.URL}/${this.teamID}`]);
+    });
+  }
   onUpdatePlayer(player: Player){
     console.log('player', player);
     this.playerService.updatePlayer(player, this.teamID, this.playerID).subscribe(res => {
@@ -120,6 +125,7 @@ export class PlayerDetailComponent implements OnInit {
         ]
       ],
       number: [
+        '',
         Validators.required
       ],
       height: [
