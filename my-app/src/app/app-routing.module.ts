@@ -10,7 +10,7 @@ import { PageNotFoundComponent } from './error/components/page-not-found/page-no
 const routesConfig: Routes = [
   {
     path: '',
-    redirectTo: 'team',
+    redirectTo: 'teams',
     pathMatch: 'full'
   },
   {

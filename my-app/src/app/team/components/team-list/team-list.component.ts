@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Team } from '../../models/team.model';
 import { TeamService } from '../../services/team.service';
+import { TEAM } from '../../team-constants';
 
 @Component({
   selector: 'app-team-list',
@@ -23,6 +24,6 @@ export class TeamListComponent implements OnInit {
   }
 
   goToTeam(id: number) {
-    this.router.navigate([`/team/${id}`])
+    this.router.navigate([`${TEAM.URL}/${id}`])
   }
 }

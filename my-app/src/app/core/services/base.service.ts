@@ -35,4 +35,13 @@ export class BaseService<T> {
     return this.http.get<T[]>(this.getUrl(url));
   }
 
+    /**
+   * Call API with PUT method
+   * @param url 
+   * @param body 
+   */
+  put(url: string, body: any): Observable<T> {
+    return this.http.put<T>(this.getUrl(url), body);
+  }
+
 }

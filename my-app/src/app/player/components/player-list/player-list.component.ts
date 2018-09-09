@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Player } from '../../model/player.model';
 import { PlayerService } from '../../sevices/player.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { TEAM } from '../../../team/team-constants';
+import { PLAYER } from '../../player-constants';
 
 @Component({
   selector: 'app-player-list',
@@ -12,7 +14,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class PlayerListComponent implements OnInit {
 
   public players: Player[];
-  public id: number;
+  public teamID: number;
+  public playerID: number;
 
   constructor(
     private playerService: PlayerService,
@@ -21,24 +24,27 @@ export class PlayerListComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
-      this.id = Number(params.get('id'));
+      this.teamID = Number(params.get('id'));
     });
-    this.showPlayerList(this.id);
+    this.showPlayerList(this.teamID);
   }
 
-  showPlayerList(id: number) {
-    this.playerService.getPlayerList(id).subscribe((res: any) => {
+  showPlayerList(teamID: number) {
+    this.playerService.getPlayerList(teamID).subscribe((res: any) => {
       this.players = res;
-      console.log(this.players);
     })
   }
 
   goHome() {
-    this.router.navigate(['/team'])
+    this.router.navigate([`${TEAM.URL}`]);
   }
 
-  goToPlayer(id: number){
-    this.router.navigate([`/team/${id}/player`]);
+  showPlayer(playerID: number){
+    this.router.navigate([`${TEAM.URL}/${this.teamID}/${PLAYER.URL}/${playerID}`]);
+  }
+
+  editPlayer(playerID: number){
+    this.router.navigate([`${TEAM.URL}/${this.teamID}/${PLAYER.URL}/${playerID}/edit`]);
   }
 
 }

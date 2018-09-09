@@ -15,7 +15,7 @@ import { MainLayoutComponent } from '../shared/components/main-layout/main-layou
 
 const routesConfig: Routes = [
   {
-    path: 'team',
+    path: 'teams',
     component: MainLayoutComponent,
     children: [
       {
@@ -25,7 +25,7 @@ const routesConfig: Routes = [
     ]
   },
   {
-    path: 'team/:id',
+    path: 'teams/:id',
     component: MainLayoutComponent,
     children: [
       ...routesConfigPlayer

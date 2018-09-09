@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PlayerComponent } from './pages/player/player.component';
 import { PlayerDetailComponent } from './pages/player-detail/player-detail.component';
@@ -8,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 
 const modules: any[] = [
   CommonModule,
+  ReactiveFormsModule,
   PlayerRoutingModule,
   SharedModule
 ]

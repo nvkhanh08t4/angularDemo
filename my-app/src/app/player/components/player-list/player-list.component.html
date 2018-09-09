@@ -19,9 +19,9 @@
       <td>{{player.weight}}</td>
       <td>{{player.birthday | date:'medium'}}</td>
       <td class="tdButton">
-        <button type="button" class="btn btn-info btnAction" (click)="goToPlayer(player.id)">Detail</button>
-        <button type="button" class="btn btn-warning btnAction" (click)="goToPlayer(player.id)">Edit</button>
-        <button type="button" class="btn btn-danger btnAction" (click)="goToPlayer(player.id)">Delete</button>
+        <button type="button" class="btn btn-info btnAction" (click)="showPlayer(player.id)">Detail</button>
+        <button type="button" class="btn btn-warning btnAction" (click)="editPlayer(player.id)">Edit</button>
+        <button type="button" class="btn btn-danger btnAction" (click)="deletePlayer(player.id)">Delete</button>
       </td>
     </tr>
   </tbody>
