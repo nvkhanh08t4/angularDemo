@@ -14,6 +14,7 @@ import { TEAM } from '../../team-constants';
 export class TeamDetailComponent implements OnInit {
   public team: Team;
   public teamID: number;
+  public keyword: string;
 
   constructor(
     private teamService: TeamService,
@@ -36,7 +37,15 @@ export class TeamDetailComponent implements OnInit {
 
   addPlayer(){
     this.router.navigate([`${TEAM.URL}/${this.teamID}/${PLAYER.URL}/add`])
+  }
 
+  onKey(event: any){
+    // Get keyword form input search
+    this.keyword = event.target.value;
+
+    // Navigate to player list
+    this.router.navigate([`${TEAM.URL}/${this.teamID}`], {queryParams: {key: this.keyword}});
+    
   }
 
 }

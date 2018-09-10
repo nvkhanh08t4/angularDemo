@@ -4,6 +4,7 @@ import { PlayerService } from '../../sevices/player.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { TEAM } from '../../../team/team-constants';
 import { PLAYER } from '../../player-constants';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-player-list',
@@ -16,14 +17,17 @@ export class PlayerListComponent implements OnInit {
   public players: Player[];
   public teamID: number;
   public playerID: number;
+  public keyword: string;
+  public subcription: Subscription;
 
   constructor(
     private playerService: PlayerService,
     private router: Router,
-    private activeRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.activeRoute.paramMap.subscribe((params: ParamMap) => {
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       this.teamID = Number(params.get('id'));
     });
     this.showPlayerList(this.teamID);
@@ -34,9 +38,24 @@ export class PlayerListComponent implements OnInit {
    * @param teamID
    */
   showPlayerList(teamID: number) {
-    this.playerService.getPlayerList(teamID).subscribe((res: any) => {
-      this.players = res;
+    this.subcription = this.activatedRoute.queryParams.subscribe((params: any) => {
+      if (params) {
+        this.keyword = params['key'];
+      }
+
+      // Get player list
+      this.playerService.getPlayerList(teamID).subscribe((res: any) => {
+        if (res) {
+          // Get player follow input search
+          if (this.keyword && this.keyword.trim().length) {
+            this.players = this.playerService.searchPlayers(this.keyword.trim(), res)
+          } else {
+            this.players = res;
+          }
+        }
+      })
     })
+
   }
 
   /**

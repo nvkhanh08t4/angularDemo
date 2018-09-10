@@ -18,7 +18,6 @@ export class TeamComponent implements OnInit {
   onKey(event: any){
     // get keyWord
     this.keyword = event.target.value
-    console.log('keyword', this.keyword);
 
     // Navigate to team list 
     this.router.navigate([TEAM.URL], {queryParams: {key: this.keyword}});

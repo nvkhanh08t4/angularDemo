@@ -33,8 +33,10 @@ export class TeamService extends BaseService<Team>{
     return this.getItem(`${TEAM.URL}/?search=${keyword}`);
   }
 
-    /**
-   * Search posts by key
+  /**
+   * Search team by input search
+   * @param keyword 
+   * @param teams 
    */
   searchTeams(keyword: string, teams: Team[]) {
     return teams.filter(team => (team.name.toLowerCase().includes(keyword.toLowerCase())));

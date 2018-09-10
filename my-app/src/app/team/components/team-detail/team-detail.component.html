@@ -19,7 +19,7 @@
     <button type="button" class="btn btn-primary" (click)="addPlayer()">Add Player</button>
   </div>
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <app-search></app-search>
+    <app-search (keyup)="onKey($event)"></app-search>
   </div>
 </div>
 <hr>

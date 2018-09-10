@@ -21,7 +21,7 @@ export class TeamListComponent implements OnInit {
   constructor(
     private teamService: TeamService,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class TeamListComponent implements OnInit {
   }
 
   getTeams() {
-    this.subcription = this.activeRoute.queryParams.subscribe((params: any) => {
+    this.subcription = this.activatedRoute.queryParams.subscribe((params: any) => {
       if (params) {
         // Get keyword form parammeter
         this.keyword = params['key'];
