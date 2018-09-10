@@ -24,4 +24,19 @@ export class TeamService extends BaseService<Team>{
   getTeamDetail(id: number): Observable<Team[]>{
     return this.getItem(`${TEAM.URL}/${id}`);
   }
+
+  /**
+   * Search team for input search
+   * @param keyword 
+   */
+  searchTeam(keyword: string) : Observable<Team[]> {
+    return this.getItem(`${TEAM.URL}/?search=${keyword}`);
+  }
+
+    /**
+   * Search posts by key
+   */
+  searchTeams(keyword: string, teams: Team[]) {
+    return teams.filter(team => (team.name.toLowerCase().includes(keyword.toLowerCase())));
+  }
 }

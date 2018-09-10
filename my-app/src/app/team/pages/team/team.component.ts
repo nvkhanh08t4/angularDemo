@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TEAM } from '../../team-constants';
 
 @Component({
   selector: 'app-team',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
+  public keyword: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  onKey(event: any){
+    // get keyWord
+    this.keyword = event.target.value
+    console.log('keyword', this.keyword);
+
+    // Navigate to team list 
+    this.router.navigate([TEAM.URL], {queryParams: {key: this.keyword}});
+  }
 }
