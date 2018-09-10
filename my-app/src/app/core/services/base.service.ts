@@ -37,20 +37,27 @@ export class BaseService<T> {
 
     /**
    * Call API with PUT method
-   * @param url 
-   * @param body 
+   * @param url
+   * @param body
    */
   put(url: string, body: any): Observable<T> {
     return this.http.put<T>(this.getUrl(url), body);
-  }  
+  }
 
   /**
    * Call API with PUT method
-   * @param url 
-   * @param body 
+   * @param url
+   * @param body
    */
   post(url: string, body: any): Observable<T> {
     return this.http.post<T>(this.getUrl(url), body);
   }
 
+  /**
+   * Call API with DELETE method
+   * @param url
+   */
+  delete(url: string): Observable<{}> {
+    return this.http.delete(this.getUrl(url));
+  }
 }

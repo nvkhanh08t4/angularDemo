@@ -19,13 +19,14 @@ export class PlayerDetailComponent implements OnInit {
   playerForm: FormGroup;
   teamID: number;;
   playerID: number;
+  urlAvatar: string = PLAYER.URL_DEFAULT_AVARTAR;
 
   constructor(
     private playerService: PlayerService,
     private activeRoute: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder
-  ) { 
+  ) {
     this.router.events.pipe(
       filter((e: Event) => e instanceof NavigationEnd),
       map(() => {
@@ -43,15 +44,15 @@ export class PlayerDetailComponent implements OnInit {
       }),
       mergeMap(route => route.data),
     )
-    .subscribe((data: Data) => this.action = data.title);
+      .subscribe((data: Data) => this.action = data.title);
   }
 
   ngOnInit() {
     this.createForm();
-      // Get teamID of team param from URL
-      this.activeRoute.parent.paramMap.subscribe((params: ParamMap) => {
-        this.teamID = Number(params.get('id'));
-      });
+    // Get teamID of team param from URL
+    this.activeRoute.parent.paramMap.subscribe((params: ParamMap) => {
+      this.teamID = Number(params.get('id'));
+    });
 
     // Get playID of player param from URL
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
@@ -66,12 +67,14 @@ export class PlayerDetailComponent implements OnInit {
   /**
    * Call service to get player from server
    * then set response data to form value if success
-   * @param playerID 
+   * @param playerID
    */
   showData(teamID: number, playerID: number): void {
     this.playerService.getPlayer(teamID, playerID).subscribe(data => {
-    console.log('vao day data', data);
-    this.playerForm.patchValue(data);
+      if (data) {
+        this.playerForm.patchValue(data);
+        this.urlAvatar = data['avatar'];
+      }
     });
   }
 
@@ -80,38 +83,50 @@ export class PlayerDetailComponent implements OnInit {
    * @param player
    */
   onSubmit(player: Player): void {
-    console.log('action', this.action);
     if (this.action === 'add') {
       // Create player
-       this.onCreatePlayer(player);
-      console.log('add new');
+      this.onCreatePlayer(player);
     } else {
       // Update player
       this.onUpdatePlayer(player);
     }
   }
 
+  /**
+   * Add new player
+   * @param player
+   */
   onCreatePlayer(player: Player) {
-    this.playerService.addPlayer(player, this.teamID).subscribe(data =>{
+    this.playerService.addPlayer(player, this.teamID).subscribe(data => {
       alert('add OK')
       this.router.navigate([`${TEAM.URL}/${this.teamID}`]);
     });
   }
-  onUpdatePlayer(player: Player){
-    console.log('player', player);
+
+  /**
+   * Update inform player
+   * @param player
+   */
+  onUpdatePlayer(player: Player) {
     this.playerService.updatePlayer(player, this.teamID, this.playerID).subscribe(res => {
-      if(res){
+      if (res) {
         alert('save succsess!');
-        console.log(`${TEAM.URL}/${this.teamID}`);
         this.router.navigate([`${TEAM.URL}/${this.teamID}`]);
       }
     });
   }
 
+  onCancel(){
+    let confirmResult = confirm("Are you sure to cancel?");
+    if(confirmResult) {
+      this.router.navigate([`${TEAM.URL}/${this.teamID}`]);
+    }
+  }
+
   /**
- * Create player form by Form Builder
- * Set default value and built-in validators
- */
+   * Create player form by Form Builder
+   * Set default value and built-in validators
+   */
   createForm(): void {
     this.playerForm = this.formBuilder.group({
       name: [

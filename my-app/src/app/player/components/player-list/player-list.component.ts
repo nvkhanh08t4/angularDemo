@@ -29,22 +29,49 @@ export class PlayerListComponent implements OnInit {
     this.showPlayerList(this.teamID);
   }
 
+  /**
+   * Show player list follow teamID
+   * @param teamID
+   */
   showPlayerList(teamID: number) {
     this.playerService.getPlayerList(teamID).subscribe((res: any) => {
       this.players = res;
     })
   }
 
+  /**
+   * Navigate to home page
+   */
   goHome() {
     this.router.navigate([`${TEAM.URL}`]);
   }
 
-  showPlayer(playerID: number){
+  /**
+   * Show inform the player
+   * @param playerID
+   */
+  showPlayer(playerID: number) {
     this.router.navigate([`${TEAM.URL}/${this.teamID}/${PLAYER.URL}/${playerID}`]);
   }
 
-  editPlayer(playerID: number){
+  /**
+   * Navigate to player detail page
+   * @param playerID
+   */
+  editPlayer(playerID: number) {
     this.router.navigate([`${TEAM.URL}/${this.teamID}/${PLAYER.URL}/${playerID}/edit`]);
   }
 
+  /**
+   * Delete the player
+   * @param playerID
+   */
+  deletePlayer(playerID: number) {
+    let confirmDelete = confirm("Are you sure to delete this player");
+    if (confirmDelete) {
+      this.playerService.detelePlayer(this.teamID, playerID).subscribe((res: any) => {
+        this.showPlayerList(this.teamID);
+      })
+    }
+  }
 }
