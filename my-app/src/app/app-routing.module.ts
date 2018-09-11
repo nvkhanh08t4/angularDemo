@@ -7,7 +7,7 @@ import { routesConfigPlayer } from './player/player-routing.module';
 import { PageNotFoundComponent } from './error/components/page-not-found/page-not-found.component';
 
 
-const routesConfig: Routes = [
+const ROUTERCONFIG: Routes = [
   {
     path: '',
     redirectTo: 'teams',
@@ -20,10 +20,18 @@ const routesConfig: Routes = [
   }
 ];
 
+const MODULES = [
+  CommonModule,
+  TeamRoutingModule,
+  RouterModule.forRoot(ROUTERCONFIG, { useHash: false })
+]
 @NgModule({
-  declarations: [],
-  imports: [ CommonModule, TeamRoutingModule, RouterModule.forRoot(routesConfig, { useHash: false }) ],
-  exports: [ RouterModule ],
-  providers: [],
+  imports: [
+    ...MODULES
+  ],
+  exports: [
+     RouterModule
+  ],
 })
+
 export class AppRoutingModule {}

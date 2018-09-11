@@ -5,17 +5,25 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { SharedModule } from '../shared/shared.module';
 import { ErrorRoutingModule } from './error-routing.module';
 
+const MODULES = [
+  CommonModule,
+  ErrorRoutingModule,
+  SharedModule,
+];
+
+const COMPONENT = [
+  PageNotFoundComponent
+]
 @NgModule({
   imports: [
-    CommonModule,
-    ErrorRoutingModule,
-    SharedModule,
+     ...MODULES
   ],
   declarations: [
-    PageNotFoundComponent
+    ...COMPONENT
   ],
   exports: [
-    PageNotFoundComponent
+    ...COMPONENT
   ]
 })
+
 export class ErrorModule { }

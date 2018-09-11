@@ -19,6 +19,8 @@ export class PlayerListComponent implements OnInit {
   public playerID: number;
   public keyword: string;
   public subcription: Subscription;
+  public popoverTitle: string = 'Delete';
+  public popoverMessage: string = 'Are you sure delete this player?';
 
   constructor(
     private playerService: PlayerService,
@@ -82,15 +84,27 @@ export class PlayerListComponent implements OnInit {
   }
 
   /**
+   * Get ID player will be deleted
+   * @param id
+   */
+  deleteID(id: number) {
+    this.playerID = id;
+  }
+
+  /**
+   * Handel click confirm button
+   */
+  clickConfirm() {
+    this.deletePlayer(this.playerID);
+  }
+
+  /**
    * Delete the player
    * @param playerID
    */
   deletePlayer(playerID: number) {
-    let confirmDelete = confirm("Are you sure to delete this player");
-    if (confirmDelete) {
-      this.playerService.detelePlayer(this.teamID, playerID).subscribe((res: any) => {
-        this.showPlayerList(this.teamID);
-      })
-    }
+    this.playerService.detelePlayer(this.teamID, playerID).subscribe((res: any) => {
+      this.showPlayerList(this.teamID);
+    })
   }
 }

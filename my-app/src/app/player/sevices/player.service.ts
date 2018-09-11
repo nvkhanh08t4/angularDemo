@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+// import third party library
 import { Observable } from 'rxjs';
 
 import { BaseService } from '../../core/services/base.service';
@@ -22,8 +23,8 @@ export class PlayerService extends BaseService<Player> {
 
   /**
    * Search player by input search
-   * @param keyword 
-   * @param players 
+   * @param keyword
+   * @param players
    */
   searchPlayers(keyword: string, players: Player[]){
     return players.filter(player => (player.name.toLowerCase().includes(keyword.toLowerCase())))

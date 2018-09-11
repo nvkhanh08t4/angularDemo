@@ -1,0 +1,9 @@
+.clubImage {
+  display: inline-block;
+}
+.clubDetail {
+  display: inline-block;
+  vertical-align: middle;
+  width: 60%;
+  margin-left: 15px;
+}

@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PlayerModule } from './../player/player.module';
 import { PlayerDetailComponent } from './../player/pages/player-detail/player-detail.component'
-import { PlayerListComponent } from './components/player-list/player-list.component';
-import { TeamDetailComponent } from '../team/components/team-detail/team-detail.component';
+import { PlayerListComponent } from './pages/player-list/player-list.component';
+import { TeamDetailComponent } from '../team/pages/team-detail/team-detail.component';
 
 export const routesConfigPlayer: Routes = [
   {

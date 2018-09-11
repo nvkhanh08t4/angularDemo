@@ -45,7 +45,7 @@ export class TeamDetailComponent implements OnInit {
 
     // Navigate to player list
     this.router.navigate([`${TEAM.URL}/${this.teamID}`], {queryParams: {key: this.keyword}});
-    
+
   }
 
 }

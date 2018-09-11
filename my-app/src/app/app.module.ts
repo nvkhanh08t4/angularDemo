@@ -1,18 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
 
+
+// import components app
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/components/login/login.component';
-import { PlayerListComponent } from './player/components/player-list/player-list.component';
+
 import { TeamModule } from './team/team.module';
 import { PlayerModule } from './player/player.module';
 import { ErrorModule } from './error/error.module';
 import { CoreModule } from './core/core.module';
 
-const modules: any = [
+
+const MODULES: any = [
   BrowserModule,
   HttpModule,
   AppRoutingModule,
@@ -23,16 +26,19 @@ const modules: any = [
   CoreModule
 ];
 
+const COMPONENTS = [
+  AppComponent,
+  LoginComponent
+]
+
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    PlayerListComponent,
+    ...COMPONENTS
   ],
   imports: [
-    ...modules
+    ...MODULES
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

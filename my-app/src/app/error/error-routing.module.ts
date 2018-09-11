@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainLayoutComponent } from '../shared/components/main-layout/main-layout.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
-export const routesConfigError: Routes = [
+const ROUTERCONFIG: Routes = [
   {
     path: 'error',
     component: MainLayoutComponent,
@@ -17,10 +17,16 @@ export const routesConfigError: Routes = [
   }
 ]
 
+const MODULES = [
+  CommonModule,
+  RouterModule.forChild(ROUTERCONFIG)
+]
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, RouterModule.forChild(routesConfigError)],
-  exports: [RouterModule],
-  providers: [],
+  imports: [
+    ...MODULES
+  ],
+  exports: [
+    RouterModule],
 })
+
 export class ErrorRoutingModule { }

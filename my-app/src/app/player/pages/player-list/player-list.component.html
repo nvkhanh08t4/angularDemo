@@ -21,7 +21,8 @@
       <td class="tdButton">
         <button type="button" class="btn btn-info btnAction" (click)="showPlayer(player.id)">Detail</button>
         <button type="button" class="btn btn-warning btnAction" (click)="editPlayer(player.id)">Edit</button>
-        <button type="button" class="btn btn-danger btnAction" (click)="deletePlayer(player.id)">Delete</button>
+        <button type="button" class="btn btn-danger btnAction" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage"
+          placement="right" (confirm)="clickConfirm()" (click)="deleteID(player.id)">Delete</button>
       </td>
     </tr>
   </tbody>

@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+// import third party library
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+// import environment file
 import { environment } from './../../../environments/environment'
 
 @Injectable({
@@ -13,7 +16,9 @@ export class BaseService<T> {
   // URL mockapi serve
   public  API_ROOT: string = environment.URL_API;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   /**
    * Get full URL
