@@ -21,6 +21,7 @@ const MODULES = [
   CommonModule,
   RouterModule.forChild(ROUTERCONFIG)
 ]
+
 @NgModule({
   imports: [
     ...MODULES

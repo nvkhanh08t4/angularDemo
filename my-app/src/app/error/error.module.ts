@@ -14,6 +14,7 @@ const MODULES = [
 const COMPONENT = [
   PageNotFoundComponent
 ]
+
 @NgModule({
   imports: [
      ...MODULES

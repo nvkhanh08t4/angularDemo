@@ -45,4 +45,5 @@ export const routesConfigPlayer: Routes = [
   imports: [CommonModule, RouterModule.forChild(routesConfigPlayer)],
   exports: [RouterModule],
 })
+
 export class PlayerRoutingModule { }
