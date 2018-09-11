@@ -12,7 +12,6 @@ import { PLAYER } from '../../player-constants';
   selector: 'app-player-detail',
   templateUrl: './player-detail.component.html',
   styleUrls: ['./player-detail.component.css'],
-  providers: [PlayerService]
 })
 export class PlayerDetailComponent implements OnInit {
   action: string;

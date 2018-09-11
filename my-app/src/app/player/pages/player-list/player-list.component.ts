@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs';
   selector: 'app-player-list',
   templateUrl: './player-list.component.html',
   styleUrls: ['./player-list.component.css'],
-  providers: [PlayerService]
 })
 export class PlayerListComponent implements OnInit {
 

@@ -7,6 +7,7 @@ import { PlayerModule } from './../player/player.module';
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { TeamDetailComponent } from './pages/team-detail/team-detail.component';
+import { TeamService } from './services/team.service';
 
 const MODULES = [
   CommonModule,
@@ -20,6 +21,11 @@ const COMPONENTS: any[] = [
   TeamDetailComponent,
   TeamListComponent
 ]
+
+const PROVIDERS: any[] = [
+  TeamService
+]
+
 @NgModule({
   imports: [
     ...MODULES
@@ -29,6 +35,9 @@ const COMPONENTS: any[] = [
   ],
   exports: [
     ...COMPONENTS
+  ],
+  providers: [
+    ...PROVIDERS
   ]
 })
 

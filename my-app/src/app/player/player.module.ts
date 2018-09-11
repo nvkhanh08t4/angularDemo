@@ -9,6 +9,7 @@ import { PlayerDetailComponent } from './pages/player-detail/player-detail.compo
 import { PlayerRoutingModule } from './player-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { PlayerListComponent } from './pages/player-list/player-list.component';
+import { PlayerService } from './sevices/player.service';
 
 const MODULES: any[] = [
   CommonModule,
@@ -24,6 +25,11 @@ const COMPONENTS: any[] = [
   PlayerListComponent,
   PlayerDetailComponent
 ]
+
+const PROVIDERS: any[] = [
+  PlayerService
+]
+
 @NgModule({
   imports: [
     ...MODULES
@@ -33,7 +39,10 @@ const COMPONENTS: any[] = [
   ],
   exports: [
     ...COMPONENTS
-  ]
+  ],
+  providers: [
+    ...PROVIDERS
+]
 })
 
 export class PlayerModule { }

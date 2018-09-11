@@ -9,8 +9,8 @@ import { TEAM } from '../../team-constants';
   selector: 'app-team-detail',
   templateUrl: './team-detail.component.html',
   styleUrls: ['./team-detail.component.css'],
-  providers: [TeamService]
 })
+
 export class TeamDetailComponent implements OnInit {
   public team: Team;
   public teamID: number;
